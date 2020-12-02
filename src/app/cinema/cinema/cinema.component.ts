@@ -7,9 +7,11 @@ import { CinemaService } from 'src/app/services/cinema.service';
   styleUrls: ['./cinema.component.scss'],
 })
 export class CinemaComponent implements OnInit {
-  public rooms: any;
+
 
   constructor(private cinemaService: CinemaService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 }
