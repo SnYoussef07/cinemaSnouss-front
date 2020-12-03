@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
-import { ListFilmScreeningComponent } from './component/listFilmScreening/list-film-screening/list-film-screening.component';
+import { ListFilmScreeningComponent } from './component/list-film-screening/list-film-screening.component';
+import { FilmScreeningComponent } from './component/film-screening/film-screening.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ListFilmScreeningComponent
+    ListFilmScreeningComponent,
+    FilmScreeningComponent
   ],
   imports: [
     BrowserModule,
