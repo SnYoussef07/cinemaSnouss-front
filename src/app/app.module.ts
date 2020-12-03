@@ -6,13 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
-import { CinemaComponent } from './cinema/cinema/cinema.component';
+import { ListFilmScreeningComponent } from './component/listFilmScreening/list-film-screening/list-film-screening.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CinemaComponent
+    ListFilmScreeningComponent
   ],
   imports: [
     BrowserModule,

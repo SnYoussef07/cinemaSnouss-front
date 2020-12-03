@@ -1,12 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class CinemaService {
+export class FilmScreeningService {
   public host: string = 'http://localhost:8080';
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   public getRooms() {
     return this.http.get(this.host + '/rooms');
