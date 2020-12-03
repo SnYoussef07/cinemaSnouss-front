@@ -10,10 +10,10 @@ export class ListFilmScreeningComponent implements OnInit {
   rooms: any;
   public hostPicture: string = 'http://localhost:8080/movies/pictures/';
 
-  constructor(private cinemaService: FilmScreeningService) {}
+  constructor(private filmScreeningService: FilmScreeningService) {}
 
   ngOnInit(): void {
-    this.cinemaService.getRooms().subscribe(
+    this.filmScreeningService.getRooms().subscribe(
       (data) => {
         this.rooms = data;
       },

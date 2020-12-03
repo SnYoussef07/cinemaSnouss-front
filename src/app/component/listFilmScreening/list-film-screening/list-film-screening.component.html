@@ -1,25 +1,42 @@
 <div class="container mt-4">
-  <h2>Les salles</h2>
+  <h2>Les Projections</h2>
   <hr />
   <div class="row" *ngIf="rooms">
-    <div class="col-lg-6 mb-4" *ngFor="let item of rooms">
-
-      <div class="card">
-        <img class="card-img-top " src="{{hostPicture+item.projections[0].movie.id}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{ item.projections[0].movie.title }}</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <ul class="list-group">
-            <li class="list-group-item">Séance</li>
-            <li *ngFor="let p of item.projections" class="list-group-item">
-              {{p.sessionMovie.startTime}} => : {{p.price}}$
-            </li>
-          </ul>
+    <div class="col-lg-4 mb-4" *ngFor="let item of rooms">
+      <div class="movie-card">
+        <div class="movie-header manOfSteel">
+          <img
+            class="card-img-top"
+            src="{{ hostPicture + item.projections[0].movie.id }}"
+            alt="Card image cap"
+          />
+        </div>
+        <!--movie-header-->
+        <div class="movie-content">
+          <div class="movie-content-header">
+            <h3 class="movie-title">{{ item.projections[0].movie.title }}</h3>
+          </div>
+          <div class="movie-info">
+            <!--date,time-->
+            <div class="info-section">
+              <label>Date</label>
+              <span>{{ item.projections[0].screeningDate | date }}</span>
+            </div>
+            <!--Room-->
+            <div class="info-section">
+              <label>Room</label>
+              <span>{{ item.name }}</span>
+            </div>
+            <!--durré-->
+            <div class="info-section">
+              <label>duration</label>
+              <span>{{
+                item.projections[0].movie.duration | date: "hh:mm:ss"
+              }}</span>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
-
