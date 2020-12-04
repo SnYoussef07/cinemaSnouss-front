@@ -1,7 +1,7 @@
 <div class="filmScreening">
   <div class="imgHeader">
     <img
-      src="http://localhost:8080/movies/banner/1"
+      src="{{ hostBanner + room.projections[0].movie.id }}"
       class="img-fluid"
       alt="Responsive image"
     />
@@ -9,15 +9,17 @@
   <div class="container p-5">
     <div class="row">
       <div class="col-lg-4">
-        <a href="https://www.youtube.com/watch?v=fP2w_UAK6B4"
-          ><img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_cover.jpg"
-            alt="cover"
-            class="cover"
-        /></a>
+        <div class="imgLeft">
+          <a href="https://www.youtube.com/watch?v=fP2w_UAK6B4"
+            ><img
+              src="{{ hostPicture + room.projections[0].movie.id }}"
+              alt="cover"
+            />
+          </a>
+        </div>
       </div>
       <div class="col-lg-8">
-        <h1 class="text-center">Titre</h1>
+        <h1 class="text-center">{{ room.projections[0].movie.title }}</h1>
         <p class="mt-5">
           Le Lorem Ipsum est simplement du faux texte employé dans la
           composition et la mise en page avant impression. Le Lorem Ipsum est le
@@ -33,6 +35,6 @@
         </p>
       </div>
     </div>
-    <hr>
+    <hr />
   </div>
 </div>

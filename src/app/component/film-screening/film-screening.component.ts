@@ -8,10 +8,11 @@ import { FilmScreeningService } from 'src/app/services/film-screening.service';
   styleUrls: ['./film-screening.component.scss'],
 })
 export class FilmScreeningComponent implements OnInit {
-  room: any;
+  public room: any;
   public hostPicture: string = 'http://localhost:8080/movies/pictures/';
-
+  public hostBanner: string = 'http://localhost:8080/movies/banner/';
   public idRoom: any = null;
+
   constructor(
     private route: ActivatedRoute,
     private filmScreeningService: FilmScreeningService
@@ -21,7 +22,9 @@ export class FilmScreeningComponent implements OnInit {
     this.route.paramMap.subscribe((res) => {
        this.idRoom = res.get('id');
       this.filmScreeningService.getRoomById(this.idRoom).subscribe(
-        (result) => (this.room = result),
+        (result) => {
+          (this.room = result)
+        },
         (err) => console.log('Err' + err)
       );
     });

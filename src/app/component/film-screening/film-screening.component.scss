@@ -1,8 +1,13 @@
+* {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
 .filmScreening {
   background-color: #064460;
 }
 
-.container{
+.container {
   background-color: #f1f5f6;
   border: solid 1px #ff4f2e;
 }
@@ -17,4 +22,18 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.imgLeft img {
+  width: 100% !important;
+  height: 100% !important;
+
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.imgLeft img:hover {
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
 }
