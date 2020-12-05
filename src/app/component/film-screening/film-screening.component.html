@@ -7,7 +7,7 @@
     />
   </div>
   <div class="container p-5">
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-lg-4">
         <div class="imgLeft">
           <a href="https://www.youtube.com/watch?v=fP2w_UAK6B4"
@@ -36,5 +36,42 @@
       </div>
     </div>
     <hr />
+    <!-- seance -->
+    <h3>Les Seances</h3>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a
+          *ngFor="let item of room.projections"
+          class="nav-item nav-link"
+          id="{{ item.sessionMovie.startTime }}"
+          data-toggle="tab"
+          href="#s{{ item.sessionMovie.id }}"
+          role="tab"
+          aria-controls="nav-contact"
+          aria-selected="false"
+          >{{ item.sessionMovie.startTime }} => Prix : {{room.projections[0].price}}$</a
+        >
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div
+        *ngFor="let item of room.projections"
+        class="tab-pane fade"
+        id="s{{ item.sessionMovie.id }}"
+        role="tabpanel"
+        aria-labelledby="nav-contact-tab"
+      >
+        {{item.sessionMovie.id}}Le Lorem Ipsum est simplement du faux texte employé dans la
+        composition et la mise en page avant impression. Le Lorem Ipsum est le
+        faux texte standard de l'imprimerie depuis les années 1500, quand un
+        imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser
+        un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq
+        siècles, mais s'est aussi adapté à la bureautique informatique, sans que
+        son contenu n'en soit modifié. Il a été popularisé dans les années 1960
+        grâce à la vente de feuilles Letraset contenant des passages du Lorem
+        Ipsum, et, plus récemment, par son inclusion dans des applications de
+        mise en page de texte, comme Aldus PageMaker.
+      </div>
+    </div>
   </div>
 </div>
