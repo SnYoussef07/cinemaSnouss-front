@@ -16,4 +16,8 @@ export class FilmScreeningService {
   public getRoomById(id: any) {
     return this.http.get(`${this.host}/rooms/${id}`);
   }
+
+  public getTicketsByIdFilmScreening(id: any){
+    return this.http.get(`${this.host}/filmScreenings/${id}/tickets`);
+  }
 }

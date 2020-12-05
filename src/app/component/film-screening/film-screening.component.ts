@@ -9,6 +9,7 @@ import { FilmScreeningService } from 'src/app/services/film-screening.service';
 })
 export class FilmScreeningComponent implements OnInit {
   public room: any;
+  public tickets: any;
   public hostPicture: string = 'http://localhost:8080/movies/pictures/';
   public hostBanner: string = 'http://localhost:8080/movies/banner/';
   public idRoom: any = null;
@@ -20,13 +21,22 @@ export class FilmScreeningComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((res) => {
-       this.idRoom = res.get('id');
+      this.idRoom = res.get('id');
       this.filmScreeningService.getRoomById(this.idRoom).subscribe(
         (result) => {
-          (this.room = result)
+          this.room = result;
         },
         (err) => console.log('Err' + err)
       );
     });
+  }
+
+  public onGetAllTickets(id: any) {
+    this.filmScreeningService.getTicketsByIdFilmScreening(id).subscribe(
+      (result) => {
+        this.tickets = result;
+      },
+      (err) => console.log(err)
+    );
   }
 }
