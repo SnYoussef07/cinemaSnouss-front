@@ -43,8 +43,14 @@ export class FilmScreeningComponent implements OnInit {
   }
 
   public onSelectTicket(ticket: any) {
-    ticket.selected = true;
-    this.selectedTickets.push(ticket);
+    if(!ticket.selected){
+      ticket.selected = true;
+      this.selectedTickets.push(ticket);
+    }else{
+      ticket.selected = false;
+      this.selectedTickets.splice(this.selectedTickets.indexOf(ticket),1);
+    }
+    console.log(this.selectedTickets)
   }
 
   public getTicketClass(ticket: any) {
