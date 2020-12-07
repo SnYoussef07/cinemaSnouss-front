@@ -62,11 +62,29 @@
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
-        [{{ item.sessionMovie.id }}]
-        <div class="row">
-          <!--<button *ngFor="let ticket of tickets" class="btn btn-primary">
-          </button>-->
-          <img *ngFor="let ticket of tickets" src="assets/img/seat.png" alt="" width="5%" class="btn btn-success m-1"/>
+        <div class="row p-4">
+          <div class="col-lg-6">
+            <span *ngFor="let ticket of tickets"
+              ><button
+                class="{{ getTicketClass(ticket) }}"
+                (click)="onSelectTicket(ticket)"
+                *ngIf="ticket.id % 2 == 0"
+                [disabled]="ticket.reserve"
+              >
+                <i class="fas fa-chair"></i></button
+            ></span>
+          </div>
+          <div class="col-lg-6">
+            <span *ngFor="let ticket of tickets"
+              ><button
+                class="{{ getTicketClass(ticket) }}"
+                (click)="onSelectTicket(ticket)"
+                *ngIf="ticket.id % 2 != 0"
+                [disabled]="ticket.reserve"
+              >
+                <i class="fas fa-chair"></i></button
+            ></span>
+          </div>
         </div>
       </div>
     </div>

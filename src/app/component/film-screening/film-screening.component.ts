@@ -13,6 +13,7 @@ export class FilmScreeningComponent implements OnInit {
   public hostPicture: string = 'http://localhost:8080/movies/pictures/';
   public hostBanner: string = 'http://localhost:8080/movies/banner/';
   public idRoom: any = null;
+  private selectedTickets: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,8 +36,26 @@ export class FilmScreeningComponent implements OnInit {
     this.filmScreeningService.getTicketsByIdFilmScreening(id).subscribe(
       (result) => {
         this.tickets = result;
+        this.selectedTickets = [];
       },
       (err) => console.log(err)
     );
+  }
+
+  public onSelectTicket(ticket: any) {
+    ticket.selected = true;
+    this.selectedTickets.push(ticket);
+  }
+
+  public getTicketClass(ticket: any) {
+    let classBtn = 'btn m-1 ';
+    if (ticket.reserve == true) {
+      classBtn += 'btn-danger';
+    } else if (ticket.selected) {
+      classBtn += 'btn-warning';
+    } else {
+      classBtn += 'btn-success';
+    }
+    return classBtn;
   }
 }
