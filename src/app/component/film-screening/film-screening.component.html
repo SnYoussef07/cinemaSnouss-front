@@ -19,8 +19,8 @@
         </div>
       </div>
       <div class="col-lg-8">
-        <h1 class="text-center">{{ room.projections[0].movie.title }}</h1>
-        <p class="mt-5">
+        <h1 class="text-center mb-5">{{ room.projections[0].movie.title }}</h1>
+        <p>
           Le Lorem Ipsum est simplement du faux texte employé dans la
           composition et la mise en page avant impression. Le Lorem Ipsum est le
           faux texte standard de l'imprimerie depuis les années 1500, quand un
@@ -31,13 +31,17 @@
           popularisé dans les années 1960 grâce à la vente de feuilles Letraset
           contenant des passages du Lorem Ipsum, et, plus récemment, par son
           inclusion dans des applications de mise en page de texte, comme Aldus
-          PageMaker.
+          PageMaker
         </p>
+        <p>Réalisateur : Guy Ritchie</p>
+        <p>Date de sortie : Date de sortie : 10 mai 2017</p>
       </div>
     </div>
     <hr />
     <!-- seance -->
     <h3>Les Seances</h3>
+    <hr class="mb-4" />
+    <!-- Nav -->
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <a
@@ -50,10 +54,11 @@
           role="tab"
           aria-controls="nav-contact"
           aria-selected="false"
-          >{{ item.sessionMovie.startTime }} => Prix : {{ item.price }}$</a
+          >{{ item.sessionMovie.startTime }}</a
         >
       </div>
     </nav>
+    <!-- Tab Nav -->
     <div class="tab-content" id="nav-tabContent">
       <div
         *ngFor="let item of room.projections"
@@ -62,6 +67,9 @@
         role="tabpanel"
         aria-labelledby="nav-contact-tab"
       >
+        <h4 class="text-center my-4">
+          {{ item.price }}€ <i class="fas fa-money-bill-wave"></i>
+        </h4>
         <div class="row p-4">
           <div class="col-lg-6">
             <span *ngFor="let ticket of tickets"

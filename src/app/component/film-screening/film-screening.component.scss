@@ -38,6 +38,27 @@
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.col-lg-6{
+.col-lg-6 {
   text-align: center !important;
+
+  .btn-warning {
+    background-color:#ff4f2e;
+    color: white;
+  }
+
+  .btn-success {
+    background-color:  #3680a1;
+  }
+}
+
+.nav-tabs,
+.tab-content {
+  border: 1px solid #064460;
+}
+.nav-tabs a {
+  color: #ff4f2e;
+}
+
+.fa-money-bill-wave{
+  color:  green;
 }
