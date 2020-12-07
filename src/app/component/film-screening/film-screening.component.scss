@@ -12,6 +12,7 @@
   border: solid 1px #ff4f2e;
 }
 
+/* Banner */
 .imgHeader {
   width: 100%;
   height: 30vh;
@@ -24,30 +25,48 @@
   object-fit: cover;
 }
 
-.imgLeft img {
-  width: 100% !important;
-  height: 100% !important;
+/* img trailer*/
+.imgLeft {
+  img {
+    width: 100% !important;
+    height: 100% !important;
 
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  position: relative;
+
+  .fa-play-circle {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 8rem;
+    color: #ff4f2e;
+    z-index: 1;
+  }
 }
 
-.imgLeft img:hover {
+.imgLeft:hover{
   -webkit-transform: scale(1.03);
   transform: scale(1.03);
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.myTitle {
+  border-bottom: 2px solid #ff4f2e;
 }
 
 .col-lg-6 {
   text-align: center !important;
 
   .btn-warning {
-    background-color:#ff4f2e;
+    background-color: #ff4f2e;
     color: white;
   }
 
   .btn-success {
-    background-color:  #3680a1;
+    background-color: #3680a1;
   }
 }
 
@@ -59,6 +78,6 @@
   color: #ff4f2e;
 }
 
-.fa-money-bill-wave{
-  color:  green;
+.fa-money-bill-wave {
+  color: green;
 }
