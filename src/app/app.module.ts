@@ -8,20 +8,25 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ListFilmScreeningComponent } from './component/list-film-screening/list-film-screening.component';
 import { FilmScreeningComponent } from './component/film-screening/film-screening.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ListFilmScreeningComponent,
-    FilmScreeningComponent
+    FilmScreeningComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilmScreeningService } from 'src/app/services/film-screening.service';
 
 @Component({
@@ -10,17 +12,30 @@ import { FilmScreeningService } from 'src/app/services/film-screening.service';
 export class FilmScreeningComponent implements OnInit {
   public room: any;
   public tickets: any;
+  public totalPrice: number = 0;
   public hostPicture: string = 'http://localhost:8080/movies/pictures/';
   public hostBanner: string = 'http://localhost:8080/movies/banner/';
   public idRoom: any = null;
-  private selectedTickets: any;
+  public selectedTickets: any = [];
+  public payeForm: FormGroup;
+  /* ngb modal */
+  closeResult = '';
 
   constructor(
     private route: ActivatedRoute,
-    private filmScreeningService: FilmScreeningService
-  ) {}
+    private filmScreeningService: FilmScreeningService,
+    private fb: FormBuilder,
+    private modalService: NgbModal
+  ) {
+    this.payeForm = this.fb.group({});
+  }
 
   ngOnInit(): void {
+    this.payeForm = this.fb.group({
+      nameClient: [],
+      codePayement: [],
+      ticketsForm: [],
+    });
     this.route.paramMap.subscribe((res) => {
       this.idRoom = res.get('id');
       this.filmScreeningService.getRoomById(this.idRoom).subscribe(
@@ -43,14 +58,15 @@ export class FilmScreeningComponent implements OnInit {
   }
 
   public onSelectTicket(ticket: any) {
-    if(!ticket.selected){
+    if (!ticket.selected) {
       ticket.selected = true;
       this.selectedTickets.push(ticket);
-    }else{
+      this.acumulatPrice();
+    } else {
       ticket.selected = false;
-      this.selectedTickets.splice(this.selectedTickets.indexOf(ticket),1);
+      this.selectedTickets.splice(this.selectedTickets.indexOf(ticket), 1);
+      this.acumulatPrice();
     }
-    console.log(this.selectedTickets)
   }
 
   public getTicketClass(ticket: any) {
@@ -63,5 +79,43 @@ export class FilmScreeningComponent implements OnInit {
       classBtn += 'btn-success';
     }
     return classBtn;
+  }
+
+  public acumulatPrice() {
+    this.totalPrice = this.selectedTickets.reduce(
+      (accumulateur: any, valeurCourant: any) =>
+        accumulateur + valeurCourant.price,
+      0
+    );
+  }
+
+  public onPayTickets() {
+
+    console.log('Données du formulaire...', this.payeForm.value);
+  }
+
+  /* Modal ngbBootstrap */
+
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }
