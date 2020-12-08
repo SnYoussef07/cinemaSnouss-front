@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,11 @@ export class FilmScreeningService {
     return this.http.get(`${this.host}/rooms/${id}`);
   }
 
-  public getTicketsByIdFilmScreening(id: any){
+  public getTicketsByIdFilmScreening(id: any) {
     return this.http.get(`${this.host}/filmScreenings/${id}/tickets`);
+  }
+
+  public payeTickets(payeForm: FormGroup) {
+    return this.http.post(`${this.host}/cinema/payTickets`, payeForm);
   }
 }

@@ -33,8 +33,8 @@ export class FilmScreeningComponent implements OnInit {
   ngOnInit(): void {
     this.payeForm = this.fb.group({
       nameClient: [],
-      codePayement: [],
-      ticketsForm: [],
+      paymentCode: [],
+      ticketsId: [],
     });
     this.route.paramMap.subscribe((res) => {
       this.idRoom = res.get('id');
@@ -90,8 +90,18 @@ export class FilmScreeningComponent implements OnInit {
   }
 
   public onPayTickets() {
-
-    console.log('Données du formulaire...', this.payeForm.value);
+    let tickets: any = [];
+    this.selectedTickets.forEach((myTicket: any) => {
+      tickets.push(myTicket.id);
+    });
+    this.payeForm.patchValue({
+      ticketsId: tickets,
+    });
+    this.filmScreeningService.payeTickets(this.payeForm.value).subscribe((data:any) => {
+      console.log("success");
+    },(err:any) => {
+      console.log(err);
+    })
   }
 
   /* Modal ngbBootstrap */
