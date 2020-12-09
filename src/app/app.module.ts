@@ -10,6 +10,7 @@ import { ListFilmScreeningComponent } from './component/list-film-screening/list
 import { FilmScreeningComponent } from './component/film-screening/film-screening.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminMoviesComponent } from './component/admin-movies/admin-movies.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     ListFilmScreeningComponent,
     FilmScreeningComponent,
+    AdminMoviesComponent,
   ],
   imports: [
     BrowserModule,
