@@ -14,7 +14,14 @@ export class AdminMoviesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieForm = this.fb.group({});
+    this.movieForm = this.fb.group({
+      title: [],
+      description: [],
+      filmDirector: [],
+      duration: [],
+      releaseDate: [],
+      trailer: [],
+    });
   }
 
   public onAddMovie() {

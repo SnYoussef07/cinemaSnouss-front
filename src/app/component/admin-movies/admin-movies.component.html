@@ -2,5 +2,67 @@
   <div class="container p-5">
     <h1>Admin Movie</h1>
     <hr />
+    <form [formGroup]="movieForm" (ngSubmit)="onAddMovie()">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          aria-describedby="title"
+          placeholder="Titre"
+          formControlName="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          type="text"
+          id="description"
+          class="md-textarea form-control"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="filmDirector:">Réalisateur </label>
+        <input
+          type="text"
+          class="form-control"
+          id="filmDirector"
+          placeholder="Réalisateur "
+          formControlName="filmDirector"
+        />
+      </div>
+      <div class="form-group">
+        <label for="duration:">Durée </label>
+        <input
+          type="number"
+          class="form-control"
+          id="duration"
+          placeholder="Durée "
+          formControlName="duration"
+        />
+      </div>
+      <div class="form-group">
+        <label for="releaseDate:">Date de sortie</label>
+        <input
+          type="date"
+          class="form-control"
+          id="releaseDate"
+          placeholder="Date de sortie"
+          formControlName="releaseDate"
+        />
+      </div>
+      <div class="form-group">
+        <label for="trailer:">Lien Bande-annonce</label>
+        <input
+          type="text"
+          class="form-control"
+          id="trailer"
+          placeholder="Lien Bande-annonce"
+          formControlName="trailer"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
   </div>
 </div>
