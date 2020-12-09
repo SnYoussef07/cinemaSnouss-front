@@ -20,6 +20,7 @@
           type="text"
           id="description"
           class="md-textarea form-control"
+          formControlName="description"
         ></textarea>
       </div>
       <div class="form-group">
@@ -53,13 +54,34 @@
         />
       </div>
       <div class="form-group">
-        <label for="trailer:">Lien Bande-annonce</label>
+        <label for="trailer">Lien Bande-annonce</label>
         <input
           type="text"
           class="form-control"
           id="trailer"
           placeholder="Lien Bande-annonce"
           formControlName="trailer"
+        />
+      </div>
+      <div class="form-group">
+        <label for="picture">images</label>
+        <input
+          type="file"
+          class="form-control"
+          id="picture"
+          formControlName="picture"
+          (change)="onFileChange($event)"
+        />
+      </div>
+      <div class="form-group">
+        <label for="banner">bannière</label>
+        <input
+          routerLink=""
+          type="file"
+          class="form-control"
+          id="banner"
+          formControlName="banner"
+          (change)="onFileChangeBanner($event)"
         />
       </div>
       <button type="submit" class="btn btn-primary">Ajouter</button>
