@@ -9,6 +9,7 @@ import { AdminMoviesService } from 'src/app/services/admin-movies.service';
 })
 export class AdminMoviesComponent implements OnInit {
   public movieForm: FormGroup;
+  public categories: any;
 
   constructor(
     private fb: FormBuilder,
@@ -25,14 +26,22 @@ export class AdminMoviesComponent implements OnInit {
       duration: [],
       releaseDate: [],
       trailer: [],
+      category: [],
       picture: [],
       banner: [],
       fileSource: [],
       fileSourceBanner: [],
     });
+
+    this.categories = this.adminMovieService.getCategories().subscribe(
+      (data: any) => (this.categories = data),
+      (err: any) => console.log(err)
+    );
   }
 
   public onAddMovie() {
+    /* get category */
+    this.getCatById(this.movieForm.value.category);
     this.adminMovieService.addMovie(this.movieForm.value).subscribe(
       (data: any) => {
         this.adminMovieService
@@ -42,7 +51,7 @@ export class AdminMoviesComponent implements OnInit {
               this.adminMovieService
                 .uploadBanner(this.movieForm.value, data.id)
                 .subscribe((data: any) => {
-                  console.log('success');
+                  this.movieForm.reset();
                 });
             },
             (err: any) => {
@@ -54,8 +63,15 @@ export class AdminMoviesComponent implements OnInit {
         console.log(err);
       }
     );
-    console.log(this.movieForm.value);
   }
+
+  public getCatById(id: any) {
+    const cat = this.categories.filter((myCat: any) => myCat.id == id);
+    this.movieForm.patchValue({
+      category: cat[0],
+    });
+  }
+
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -65,6 +81,7 @@ export class AdminMoviesComponent implements OnInit {
       });
     }
   }
+
   onFileChangeBanner(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];

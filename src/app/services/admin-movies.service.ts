@@ -30,4 +30,7 @@ export class AdminMoviesService {
 
     return this.http.post(`${this.host}/movies/uploadBanner/${idMovie}`, formdata);
   }
+  public getCategories(){
+    return this.http.get(`${this.host}/categories`,);
+  }
 }
