@@ -1,5 +1,8 @@
 <div class="loginPage">
   <div class="container p-5">
+    <div class="alert alert-danger" *ngIf="this.mode == 1" role="alert">
+      <strong>Bad credentials</strong>
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-group">
         <label for="exampleInputEmail1">Username</label>
