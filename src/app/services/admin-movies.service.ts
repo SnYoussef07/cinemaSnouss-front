@@ -14,8 +14,6 @@ export class AdminMoviesService {
     let formdata: FormData = new FormData();
     formdata.append('file', movieForm.fileSource);
 
-    //let data = { movieForm: movieForm, formdata: formdata };
-
     return this.http.post(`${this.host}/movies`, movieForm);
   }
   public uploadPictures(movieForm: any, idMovie: any) {

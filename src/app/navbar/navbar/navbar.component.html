@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CinéSnouss</a>
+  <a class="navbar-brand" [routerLink]="['/']">CinéSnouss</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -15,14 +15,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" [routerLink]="['']">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">
+      <button
+        [routerLink]="['/login']"
+        class="btn btn-success my-2 my-sm-0"
+        type="submit"
+      >
         <i class="fas fa-sign-in-alt"></i> Login
       </button>
     </form>
