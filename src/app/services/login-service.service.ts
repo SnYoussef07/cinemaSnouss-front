@@ -13,4 +13,8 @@ export class LoginServiceService {
     /* on veux pas recuperer json mais le http */
     return this.http.post(`${this.host}/login`, user, { observe: 'response' });
   }
+
+  saveToken(jwt: string) {
+    localStorage.setItem('token', jwt);
+  }
 }

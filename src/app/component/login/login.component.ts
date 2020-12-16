@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginServiceService
+    private loginService: LoginServiceService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({});
   }
@@ -26,12 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   public onLogin() {
-    console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       (data: any) => {
-        console.log('success');
         let jwtToken = data.headers.get('Authorization');
-        console.log(jwtToken);
+        this.loginService.saveToken(jwtToken);
+        this.router.navigateByUrl('/');
       },
       (err: any) => {
         this.mode = 1;
