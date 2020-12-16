@@ -4,4 +4,11 @@
   a {
     color: white;
   }
+  .dropdown-menu{
+    background-color: #3680a1;
+    .dropdown-item:hover{
+      background-color: #064460;
+    }
+  }
+
 }

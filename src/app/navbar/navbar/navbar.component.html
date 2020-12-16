@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" [routerLink]="['/']">CinéSnouss</a>
   <button
     class="navbar-toggler"
@@ -20,14 +20,34 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Movies</a>
+          <a class="dropdown-item">Tickets</a>
+        </div>
+      </li>
+      <!-- Dropdown -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button
+        *ngIf="this.token === null"
         [routerLink]="['/login']"
         class="btn btn-success my-2 my-sm-0"
         type="submit"
       >
         <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+      <button
+        *ngIf="this.token !== null"
+        (click)="logout()"
+        class="btn btn-danger my-2 my-sm-0"
+        type="submit"
+      >
+        <i class="fas fa-sign-in-alt"></i> logout
       </button>
     </form>
   </div>
