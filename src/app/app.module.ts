@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminMoviesComponent } from './component/admin-movies/admin-movies.component';
 import { LoginComponent } from './component/login/login.component';
+import { AdminTicketsComponent } from './component/admin-tickets/admin-tickets.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './component/login/login.component';
     FilmScreeningComponent,
     AdminMoviesComponent,
     LoginComponent,
+    AdminTicketsComponent,
   ],
   imports: [
     BrowserModule,

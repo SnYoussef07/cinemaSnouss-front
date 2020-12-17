@@ -23,7 +23,6 @@ export class FilmScreeningService {
   }
 
   public payeTickets(payeForm: FormGroup) {
-    console.log(payeForm)
     return this.http.post(`${this.host}/cinema/payTickets`, payeForm, {
       headers: new HttpHeaders({
         Authorization: localStorage.getItem('token'),
