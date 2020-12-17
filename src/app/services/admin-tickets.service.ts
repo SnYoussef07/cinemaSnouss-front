@@ -14,4 +14,8 @@ export class AdminTicketsService {
   public getTickets() {
     return this.http.get(this.host + '/tickets');
   }
+
+  public getFilmScreeningByTicket(id:any){
+    return this.http.get(`${this.host}/tickets/${id}/filmScreening`);
+  }
 }

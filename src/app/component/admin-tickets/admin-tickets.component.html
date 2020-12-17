@@ -3,15 +3,53 @@
     <div class="list-group" *ngIf="this.tickets">
       <a
         *ngFor="let item of this.tickets"
+        (click)="open(content, item.id)"
         class="list-group-item list-group-item-action flex-column align-items-start"
       >
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Client : <strong>{{ item.clientName }}</strong></h5>
-          <small>Prix : <strong>{{ item.price }}</strong></small>
+          <h5 class="mb-1">
+            Client : <strong>{{ item.clientName }}</strong>
+          </h5>
+          <small
+            >Prix : <strong>{{ item.price }}</strong></small
+          >
         </div>
-        <p class="mb-1">Numéro du Siege : <strong>{{ item.seat.number }}</strong></p>
+        <p class="mb-1">
+          Numéro du Siege : <strong>{{ item.seat.number }}</strong>
+        </p>
         <small>Donec id elit non mi porta.</small>
       </a>
     </div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Information ticket</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="this.currentTicketInfo">
+        <p>
+          <strong>Titre du Film : </strong
+          >{{ this.currentTicketInfo.movie.title }}
+        </p>
+        <p>
+          <strong>Catégorie du Film : </strong
+          >{{ this.currentTicketInfo.movie.category.name }}
+        </p>
+        <p>
+          <strong>Session : </strong
+          >{{ this.currentTicketInfo.sessionMovie.startTime }}
+        </p>
+        <p>
+          <strong>Prix de la Session : </strong
+          >{{ this.currentTicketInfo.price }} $
+        </p>
+      </div>
+    </ng-template>
   </div>
 </div>
