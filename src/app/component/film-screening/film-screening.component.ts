@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilmScreeningService } from 'src/app/services/film-screening.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-film-screening',
@@ -25,14 +26,15 @@ export class FilmScreeningComponent implements OnInit {
     private route: ActivatedRoute,
     private filmScreeningService: FilmScreeningService,
     private fb: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public loginService: LoginServiceService
   ) {
     this.payeForm = this.fb.group({});
   }
 
   ngOnInit(): void {
     this.payeForm = this.fb.group({
-      nameClient: [],
+      nameClient: [this.loginService.getSubject()],
       paymentCode: [],
       ticketsId: [],
     });
@@ -97,11 +99,14 @@ export class FilmScreeningComponent implements OnInit {
     this.payeForm.patchValue({
       ticketsId: tickets,
     });
-    this.filmScreeningService.payeTickets(this.payeForm.value).subscribe((data:any) => {
-      console.log("success");
-    },(err:any) => {
-      console.log(err);
-    })
+    this.filmScreeningService.payeTickets(this.payeForm.value).subscribe(
+      (data: any) => {
+        console.log('success');
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   /* Modal ngbBootstrap */

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({
@@ -23,6 +23,11 @@ export class FilmScreeningService {
   }
 
   public payeTickets(payeForm: FormGroup) {
-    return this.http.post(`${this.host}/cinema/payTickets`, payeForm);
+    console.log(payeForm)
+    return this.http.post(`${this.host}/cinema/payTickets`, payeForm, {
+      headers: new HttpHeaders({
+        Authorization: localStorage.getItem('token'),
+      }),
+    });
   }
 }

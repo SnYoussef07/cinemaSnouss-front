@@ -17,9 +17,6 @@
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['']">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown" *ngIf="this.loginService.isAdmin()">
         <a
@@ -34,7 +31,7 @@
           Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">Movies</a>
+          <a class="dropdown-item" [routerLink]="['/admin/movies']">Movies</a>
           <a class="dropdown-item">Tickets</a>
         </div>
       </li>
@@ -42,7 +39,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button
-        *ngIf="this.token === null"
+        *ngIf="this.loginService.isAuth() == false"
         [routerLink]="['/login']"
         class="btn btn-success my-2 my-sm-0"
         type="submit"
@@ -50,7 +47,7 @@
         <i class="fas fa-sign-in-alt"></i> Login
       </button>
       <button
-        *ngIf="this.token !== null"
+        *ngIf="this.loginService.isAuth() == true"
         (click)="logout()"
         class="btn btn-danger my-2 my-sm-0"
         type="submit"

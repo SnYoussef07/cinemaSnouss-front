@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
@@ -7,17 +8,15 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  public token: any = null;
+  constructor(
+    public loginService: LoginServiceService,
+    private router: Router
+  ) {}
 
-  constructor(public loginService: LoginServiceService) {}
-
-  ngOnInit(): void {
-    this.token = localStorage.getItem('token');
-  }
+  ngOnInit(): void {}
 
   logout() {
     this.loginService.logout();
-    this.token = null;
-    this.ngOnInit();
+    this.router.navigateByUrl('/');
   }
 }

@@ -9,8 +9,14 @@ export class LoginServiceService {
   public host: string = 'http://localhost:8080';
   private jwtToken: any = null;
   public roles: Array<any> = [];
+  public subject: String = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem('token') != null) {
+      this.roles = jwtDecode(localStorage.getItem('token'))['roles'];
+      this.subject = jwtDecode(localStorage.getItem('token'))['sub'];
+    }
+  }
 
   login(user: any) {
     /* on veux pas recuperer json mais le http */
@@ -20,6 +26,8 @@ export class LoginServiceService {
   logout() {
     localStorage.removeItem('token');
     this.jwtToken = null;
+    this.roles = [];
+    this.subject = null;
   }
 
   loadToken() {
@@ -29,7 +37,8 @@ export class LoginServiceService {
   saveToken(jwt: string) {
     this.jwtToken = jwt;
     localStorage.setItem('token', jwt);
-    this.roles = jwtDecode(this.jwtToken)['roles'];
+    this.roles = jwtDecode(localStorage.getItem('token'))['roles'];
+    this.subject = jwtDecode(localStorage.getItem('token'))['sub'];
   }
 
   isAdmin() {
@@ -37,5 +46,14 @@ export class LoginServiceService {
       if (r.authority == 'ADMIN') return true;
     }
     return false;
+  }
+  isAuth() {
+    if (localStorage.getItem('token') != null) {
+      return true;
+    }
+    return false;
+  }
+  getSubject() {
+    return this.subject;
   }
 }
