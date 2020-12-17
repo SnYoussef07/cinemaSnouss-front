@@ -3,9 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  myUrl : 'https://cinesnouss.herokuapp.com',
   production: false,
-  urlServer: 'https://cinesnouss.herokuapp.com',
-  myUrl : 'http://localhost:8080'
 };
 
 /*
