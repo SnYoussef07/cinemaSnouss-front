@@ -1,1 +1,39 @@
-<p>list-movies works!</p>
+<div class="listMovies">
+  <div class="container p-5">
+    <h1>Les Films</h1>
+    <hr>
+    <div class="row">
+      <div class="col-lg-4" *ngFor="let item of this.movies">
+        <div class="movie-card">
+          <div class="movie-header manOfSteel">
+            <img
+              class="card-img-top"
+              src="{{ hostPicture + item.id }}"
+              alt="Card image cap"
+            />
+          </div>
+          <!--movie-header-->
+          <div class="movie-content">
+            <div class="movie-content-header">
+              <h3 class="movie-title">{{ item.title }}</h3>
+            </div>
+            <div class="movie-info">
+              <!--cat-->
+              <div class="info-section">
+                <label>catégorie</label>
+                <span>{{ item.category.name }}</span>
+              </div>
+              <!--durré-->
+              <div class="info-section">
+                <label>durée</label>
+                <span>{{
+                  item.duration
+                }} minutes </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

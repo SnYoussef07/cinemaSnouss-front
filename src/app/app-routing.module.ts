@@ -4,6 +4,7 @@ import { AdminMoviesComponent } from './component/admin-movies/admin-movies.comp
 import { AdminTicketsComponent } from './component/admin-tickets/admin-tickets.component';
 import { FilmScreeningComponent } from './component/film-screening/film-screening.component';
 import { ListFilmScreeningComponent } from './component/list-film-screening/list-film-screening.component';
+import { ListMoviesComponent } from './component/list-movies/list-movies.component';
 import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'rooms/:id', component: FilmScreeningComponent },
   { path: 'admin/movies', component: AdminMoviesComponent },
   { path: 'admin/tickets', component: AdminTicketsComponent },
+  { path: 'movies', component: ListMoviesComponent },
   { path: 'login', component: LoginComponent },
 ];
 
