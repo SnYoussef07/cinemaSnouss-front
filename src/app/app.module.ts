@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminMoviesComponent } from './component/admin-movies/admin-movies.component';
 import { LoginComponent } from './component/login/login.component';
 import { AdminTicketsComponent } from './component/admin-tickets/admin-tickets.component';
+import { ListMoviesComponent } from './component/list-movies/list-movies.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminTicketsComponent } from './component/admin-tickets/admin-tickets.c
     AdminMoviesComponent,
     LoginComponent,
     AdminTicketsComponent,
+    ListMoviesComponent,
   ],
   imports: [
     BrowserModule,
