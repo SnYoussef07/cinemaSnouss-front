@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginServiceService {
-  public host: string = 'http://localhost:8080';
+  public host: string = environment.myUrl;
   private jwtToken: any = null;
   public roles: Array<any> = [];
   public subject: String = null;

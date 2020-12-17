@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmScreeningService } from 'src/app/services/film-screening.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-film-screening',
@@ -8,7 +9,7 @@ import { FilmScreeningService } from 'src/app/services/film-screening.service';
 })
 export class ListFilmScreeningComponent implements OnInit {
   rooms: any;
-  public hostPicture: string = 'http://localhost:8080/movies/pictures/';
+  public hostPicture: string = `${environment.myUrl}/movies/pictures/`;
 
   constructor(private filmScreeningService: FilmScreeningService) {}
 

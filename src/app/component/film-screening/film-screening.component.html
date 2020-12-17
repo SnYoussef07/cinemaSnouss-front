@@ -22,13 +22,13 @@
       <div class="col-lg-8">
         <h1 class="text-center">{{ room.projections[0].movie.title }}</h1>
         <hr class="myTitle" />
-        <p>
+        <p><strong>Résumé :</strong><br>
           {{ room.projections[0].movie.description }}
         </p>
-        <p>Réalisateur : {{ room.projections[0].movie.filmDirector }}</p>
-        <p>Date de sortie : {{ room.projections[0].movie.releaseDate }}</p>
-        <p>Durée: {{ room.projections[0].movie.duration }}</p>
-        <p>Catégorie : {{ room.projections[0].movie.category.name }}</p>
+        <p><strong>Réalisateur :</strong> {{ room.projections[0].movie.filmDirector }}</p>
+        <p><strong>Date de sortie :</strong> {{ room.projections[0].movie.releaseDate }}</p>
+        <p><strong>Durée:</strong> {{ room.projections[0].movie.duration }} minutes</p>
+        <p><strong>Catégorie :</strong> {{ room.projections[0].movie.category.name }}</p>
       </div>
     </div>
     <hr />

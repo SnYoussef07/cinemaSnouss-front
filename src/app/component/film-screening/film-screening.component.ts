@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FilmScreeningService } from 'src/app/services/film-screening.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-film-screening',
@@ -14,8 +15,8 @@ export class FilmScreeningComponent implements OnInit {
   public room: any;
   public tickets: any;
   public totalPrice: number = 0;
-  public hostPicture: string = 'http://localhost:8080/movies/pictures/';
-  public hostBanner: string = 'http://localhost:8080/movies/banner/';
+  public hostPicture: string = `${environment.myUrl}/movies/pictures/`;
+  public hostBanner: string = `${environment.myUrl}/movies/banner/`;
   public idRoom: any = null;
   public selectedTickets: any = [];
   public payeForm: FormGroup;

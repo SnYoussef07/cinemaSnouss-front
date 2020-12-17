@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlServer: 'https://cinesnouss.herokuapp.com',
+  myUrl : 'http://localhost:8080'
 };
 
 /*

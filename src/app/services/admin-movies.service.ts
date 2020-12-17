@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminMoviesService {
-  public host: string = 'http://localhost:8080';
+  public host: string = environment.myUrl;
 
   constructor(private http: HttpClient) {}
 

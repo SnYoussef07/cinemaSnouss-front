@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminTicketsService {
-  public host: string = 'http://localhost:8080';
+  public host: string = environment.myUrl;
 
   constructor(private http: HttpClient) {
 
