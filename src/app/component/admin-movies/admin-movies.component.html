@@ -2,6 +2,12 @@
   <div class="container p-5">
     <h1>Admin Movie</h1>
     <hr />
+    <div class="alert alert-danger" *ngIf="this.mode == 1" role="alert">
+      <strong>Error</strong>
+    </div>
+    <div class="alert alert-success" *ngIf="this.mode == 3" role="alert">
+      <strong>Success !</strong>
+    </div>
     <form [formGroup]="movieForm" (ngSubmit)="onAddMovie()">
       <div class="form-group">
         <label for="title">Titre</label>
@@ -103,9 +109,7 @@
           (change)="onFileChangeBanner($event)"
         />
       </div>
-      <button type="submit" class="btn btn-primary">
-        Ajouter
-      </button>
+      <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtHelper } from 'angular2-jwt';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -27,9 +27,9 @@ export class LoginServiceService {
   }
 
   saveToken(jwt: string) {
+    this.jwtToken = jwt;
     localStorage.setItem('token', jwt);
-    let jwtHelper = new JwtHelper();
-    this.roles = jwtHelper.decodeToken(this.jwtToken).roles;
+    this.roles = jwtDecode(this.jwtToken)['roles'];
   }
 
   isAdmin() {

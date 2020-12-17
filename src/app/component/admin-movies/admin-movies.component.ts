@@ -10,6 +10,7 @@ import { AdminMoviesService } from 'src/app/services/admin-movies.service';
 export class AdminMoviesComponent implements OnInit {
   public movieForm: FormGroup;
   public categories: any;
+  public mode: number = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -52,15 +53,18 @@ export class AdminMoviesComponent implements OnInit {
                 .uploadBanner(this.movieForm.value, data.id)
                 .subscribe((data: any) => {
                   this.movieForm.reset();
+                  this.mode = 3;
                 });
             },
             (err: any) => {
               console.log(err);
+              this.mode = 1;
             }
           );
       },
       (err: any) => {
         console.log(err);
+        this.mode = 1;
       }
     );
   }
